@@ -32,7 +32,7 @@ class People
   end
 
   def favorite_food_frequency 
-    foods = people.inject([]) { |array, person| array << person.favorite_foods}
+    foods = people.inject([]) { |array, person| array << person.favorite_foods }
 
     foods.flatten.each_with_object(Hash.new(0)) { |food, counts| counts[food] += 1 }
   end
@@ -46,9 +46,9 @@ class People
   def person_with_most_experience_in_language(language)   
     records = people.each_with_object({}) { |person, hash| (hash[person.name] = person.years_language_experience[language.to_sym]) if person.years_language_experience[language] != nil  }
 
-    records.sort_by{ |k,v| v}
+    records.sort_by { |k,v| v }
    
-    person = records.select{ |k,v| v == records.values.sort.last }
+    person = records.select { |k,v| v == records.values.sort.last }
    
     person.key(records.values.sort.last)
   end
